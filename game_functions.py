@@ -1,3 +1,4 @@
+import os
 import sys
 from time import sleep
 import pygame
@@ -238,4 +239,19 @@ def check_high_score(stats, sb):
     """Check to see if there's a new high score."""
     if stats.score > stats.high_score:
         stats.high_score = stats.score
+        write_file('highscore.txt', str(stats.high_score))
         sb.prep_high_score()
+
+
+def read_file(path):
+    if os.path.exists(path):
+        with open(path) as file_object:
+            contents = file_object.read()
+            return contents
+    else:
+        return ''
+
+
+def write_file(path, content):
+    with open(path, 'w') as file_object:
+        file_object.write(content)

@@ -1,7 +1,7 @@
 class GameStats:
     """Track statistics for Alien Invasion."""
 
-    def __init__(self, ai_settings):
+    def __init__(self, ai_settings, gf):
         """Initialize statistics."""
         self.ai_settings = ai_settings
         self.reset_stats()
@@ -10,7 +10,9 @@ class GameStats:
         self.game_active = False
 
         # High score should never be reset.
-        self.high_score = 0
+        temp_hs = gf.read_file('highscore.txt')
+        if temp_hs: self.high_score = int(temp_hs)
+        else: self.high_score = 0
 
     def reset_stats(self):
         """Initialize statistics that can change during the game."""

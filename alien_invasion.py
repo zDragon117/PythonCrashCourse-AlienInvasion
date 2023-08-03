@@ -20,7 +20,7 @@ def run_game():
     play_button = Button(ai_settings, screen, "Play")
 
     # Create an instance to store game statistics and create a scoreboard.
-    stats = GameStats(ai_settings)
+    stats = GameStats(ai_settings, gf)
     sb = Scoreboard(ai_settings, screen, stats)
 
     # Make a ship.
